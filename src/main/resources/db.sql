@@ -3,6 +3,7 @@ CREATE TABLE clients (
     name VARCHAR(255),
     contact_info VARCHAR(255)
 );
+CREATE INDEX idx_client_name ON clients(name);
 
 CREATE TABLE products (
     id INT AUTO_INCREMENT PRIMARY KEY,
@@ -10,6 +11,7 @@ CREATE TABLE products (
     category VARCHAR(255),
     quantity INT
 );
+CREATE INDEX idx_product_category ON products(category);
 
 CREATE TABLE logistics (
     id INT AUTO_INCREMENT PRIMARY KEY,
@@ -23,6 +25,12 @@ CREATE TABLE contractors (
     contact_info VARCHAR(255)
 );
 
+CREATE TABLE warehouses (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    location VARCHAR(255)
+);
+CREATE INDEX idx_warehouse_location ON warehouses(location);
+
 CREATE TABLE product_movement (
     id INT AUTO_INCREMENT PRIMARY KEY,
     product_id INT,
@@ -33,3 +41,4 @@ CREATE TABLE product_movement (
     FOREIGN KEY (logistics_id) REFERENCES logistics(id),
     FOREIGN KEY (client_id) REFERENCES clients(id)
 );
+CREATE INDEX idx_movement_product ON product_movement(product_id);

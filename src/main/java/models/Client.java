@@ -1,13 +1,18 @@
 package models;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "clients")
 public class Client {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     private String name;
     private String contactInfo;
 
     public Client() {}
-    public Client(int id, String name, String contactInfo) {
-        this.id = id;
+    public Client(String name, String contactInfo) {
         this.name = name;
         this.contactInfo = contactInfo;
     }

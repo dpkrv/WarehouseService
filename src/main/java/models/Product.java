@@ -1,14 +1,21 @@
 package models;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "products")
 public class Product {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     private String name;
     private String category;
     private int quantity;
 
     public Product() {}
-    public Product(int id, String name, String category, int quantity) {
-        this.id = id;
+
+    // Добавляем конструктор
+    public Product(String name, String category, int quantity) {
         this.name = name;
         this.category = category;
         this.quantity = quantity;
